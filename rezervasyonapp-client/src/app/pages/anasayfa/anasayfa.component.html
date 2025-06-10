@@ -1,0 +1,42 @@
+<h2 class="baslik">Anasayfa</h2>
+
+<!-- Bireysel kullanıcı görünümü -->
+<ng-container *ngIf="userRole === 'Musteri'; else digerRoller">
+  <p>Hoş geldin bireysel kullanıcı! 🔍</p>
+
+  <div class="mekan-listesi" *ngIf="mekanlar.length > 0; else yukleniyor">
+    <div class="mekan-kart" *ngFor="let mekan of mekanlar" [routerLink]="['/mekan', mekan.id]" style="cursor: pointer;">
+      <img [src]="mekan.gorselUrl || 'assets/placeholder.jpg'" alt="{{mekan.ad}}" />
+      <h3>{{ mekan.ad }}</h3>
+      <p>⭐ {{ mekan.puan || 'Henüz puan yok' }}</p>
+    </div>
+  </div>
+
+  <ng-template #yukleniyor>
+    <p>Mekanlar yükleniyor...</p>
+  </ng-template>
+</ng-container>
+
+<!-- İşletme ve Ziyaretçi kullanıcı görünümü -->
+<ng-template #digerRoller>
+  <ng-container *ngIf="userRole === 'Isletme'; else misafir">
+    <p>Hoş geldiniz işletme sahibi! 🏢</p>
+    <!-- Buraya işletmeye ait içerikler (gelen rezervasyonlar vs.) gelecek -->
+  </ng-container>
+
+  <ng-template #misafir>
+    <p>Merhaba ziyaretçi 👋 Sadece mekanlara göz atabilirsiniz.</p>
+
+    <div class="mekan-listesi" *ngIf="mekanlar.length > 0; else yukleniyor">
+      <div class="mekan-kart" *ngFor="let mekan of mekanlar" (click)="uyelikGerekli()" style="cursor: pointer;">
+        <img [src]="mekan.gorselUrl || 'assets/placeholder.jpg'" alt="{{mekan.ad}}" />
+        <h3>{{ mekan.ad }}</h3>
+        <p>⭐ {{ mekan.puan || 'Henüz puan yok' }}</p>
+      </div>
+    </div>
+
+    <ng-template #yukleniyor>
+      <p>Mekanlar yükleniyor...</p>
+    </ng-template>
+  </ng-template>
+</ng-template>

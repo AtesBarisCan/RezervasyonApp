@@ -1,0 +1,27 @@
+<div *ngIf="mekan" class="mekan-detay-container">
+
+  <h2>{{ mekan.ad }}</h2>
+
+  <img [src]="mekan.gorselUrl || 'assets/placeholder.jpg'" alt="Mekan görseli" class="kapak-gorsel" />
+
+  <p><strong>Açıklama:</strong> {{ mekan.aciklama }}</p>
+  <p><strong>Adres:</strong> {{ mekan.adres }}</p>
+  <p><strong>Telefon:</strong> {{ mekan.telefon }}</p>
+  <p><strong>E-posta:</strong> {{ mekan.eposta }}</p>
+
+  <div *ngIf="mekan.konumLinki">
+    <p><strong>Konum:</strong></p>
+    <a [href]="mekan.konumLinki" target="_blank">📍 Google Maps'te Aç</a>
+  </div>
+
+  <p><strong>Puan:</strong> ⭐ {{ mekan.puan || 'Henüz puan yok' }}</p>
+
+  <div *ngIf="userRole === 'Musteri'">
+    <button (click)="rezervasyonYap()">Rezervasyon Yap</button>
+  </div>
+
+</div>
+
+<div *ngIf="!mekan">
+  <p>Mekan bilgisi yükleniyor...</p>
+</div>

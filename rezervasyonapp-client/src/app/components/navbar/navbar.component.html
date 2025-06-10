@@ -1,0 +1,18 @@
+<p>navbar works!</p>
+
+<nav>
+  <a routerLink="/anasayfa">Anasayfa</a>
+
+  <a *ngIf="isIsletme" routerLink="/mekan-ekle">Mekan Ekle</a>
+
+  <ng-container *ngIf="isLogged; else guestLinks">
+    <button (click)="logout()">Çıkış Yap</button>
+  </ng-container>
+
+  <ng-template #guestLinks>
+    <a routerLink="/giris">Giriş Yap</a>
+    <a routerLink="/kayit">Kayıt Ol</a>
+  </ng-template>
+</nav>
+
+

@@ -1,0 +1,31 @@
+<h2>Mekan Ekle</h2>
+
+<form (ngSubmit)="mekanEkle()" #form="ngForm">
+  <label>Ad:</label>
+  <input type="text" [(ngModel)]="mekan.ad" name="ad" required /><br />
+
+  <label>Açıklama:</label>
+  <textarea [(ngModel)]="mekan.aciklama" name="aciklama" required></textarea><br />
+
+  <label>Telefon:</label>
+  <input type="text" [(ngModel)]="mekan.telefon" name="telefon" required /><br />
+
+  <label>E-posta:</label>
+  <input type="email" [(ngModel)]="mekan.eposta" name="eposta" required /><br />
+
+  <label>Adres:</label>
+  <input type="text" [(ngModel)]="mekan.adres" name="adres" required /><br />
+
+  <label>Görsel Yükle:</label>
+  <input type="file" (change)="onFileSelected($event)" /><br />
+
+  <label>Google Maps Konum Linki:</label>
+  <input
+    type="url"
+    [(ngModel)]="mekan.konumLinki"
+    name="konumLinki"
+    placeholder="https://maps.google.com/..."
+  /><br />
+
+  <button type="submit" [disabled]="form.invalid">Mekan Ekle</button>
+</form>
