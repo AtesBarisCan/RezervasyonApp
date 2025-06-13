@@ -57,3 +57,36 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+# RezervasyonApp
+
+RezervasyonApp, restoran ve kafe gibi işletmelerin online rezervasyon kabul edebildiği, bireysel kullanıcıların ise kolayca rezervasyon oluşturabildiği bir web uygulamasıdır.
+
+## 🧰 Kullanılan Teknolojiler
+
+- ✅ **ASP.NET Core Web API** (.NET 8)
+- ✅ **Angular** (v19+)
+- ✅ **JWT** ile kimlik doğrulama
+- ✅ **Entity Framework Core** + SQL Server
+- ✅ Rol tabanlı yetkilendirme (`Bireysel`, `Isletme`)
+
+---
+
+## 🔧 Projeyi Çalıştırmak
+
+### 🖥️ Backend (ASP.NET Core)
+
+```bash
+cd RezervasyonApp
+dotnet restore
+dotnet run
+
+API varsayılan olarak https://localhost:7224 adresinde çalışır.
+
+## Frontend 
+
+cd rezervasyonapp-client
+npm install
+ng serve
+
+Uygulama tarayıcıda http://localhost:4200/ adresinde çalışır.
